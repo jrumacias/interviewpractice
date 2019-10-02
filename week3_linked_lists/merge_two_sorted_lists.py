@@ -17,23 +17,29 @@ def merge_two_lists(l1, l2):
 
     while l1 and l2:
         if l1.val < l2.val:
-            ret_cur.next = l1
+            ret_cur.next = ListNode(l1.val)
             l1 = l1.next
             ret_cur = ret_cur.next
         elif l2.val < l1.val:
-            ret_cur.next = l2
+            ret_cur.next = ListNode(l2.val)
             l2 = l2.next
             ret_cur = ret_cur.next
         elif l1.val == l2.val:
-            ret_cur.next = l1
-            ret_cur.next.next = l2
+            ret_cur.next = ListNode(l1.val)
+            ret_cur.next.next = ListNode(l2.val)
             ret_cur = ret_cur.next.next
             l1 = l1.next
             l2 = l2.next
     if l1 == None and l2 != None:
-        ret_cur.next = l2
+        while l2:
+            ret_cur.next = ListNode(l2.val)
+            l2 = l2.next
+            ret_cur = ret_cur.next
     elif l2 == None and l1 != None:
-        ret_cur.next = l1
+        while l1:
+            ret_cur.next = ListNode(l1.val)
+            l1 = l1.next
+            ret_cur = ret_cur.next
     return head.next
 
 
